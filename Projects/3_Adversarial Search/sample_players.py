@@ -21,8 +21,12 @@ class BasePlayer:
 
         See RandomPlayer and GreedyPlayer for examples.
         """
-        raise NotImplementedError
-
+        #raise NotImplementedError
+        if self.timer < TIME_LIMIT:
+            action = state.actions()
+        else:
+            action = random.choice(state.actions())
+        self.queue.put(action)
 
 class DataPlayer(BasePlayer):
     def __init__(self, player_id):
@@ -31,7 +35,7 @@ class DataPlayer(BasePlayer):
             with open("data.pickle", "rb") as f:
                 self.data = pickle.load(f)
         except (IOError, TypeError) as e:
-            logger.info(str(e))
+            logger.error(str(e))
             self.data = None
 
 
@@ -105,7 +109,7 @@ class MinimaxPlayer(BasePlayer):
         if state.ply_count < 2:
             self.queue.put(random.choice(state.actions()))
         else:
-            self.queue.put(self.minimax(state, depth=3))
+            self.queue.put(self.minimax(state, depth= 1 ))
 
     def minimax(self, state, depth):
 
