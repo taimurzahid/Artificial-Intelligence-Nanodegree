@@ -1,5 +1,7 @@
 # Artificial Intelligence Nanodegree Program Resources
 
+![alt text](https://github.com/taimurzahid/Artificial-Intelligence-Nanodegree/blob/master/Graudated.png)
+
 ## Classroom Exercises
 
 ### 1. Constraint Satisfaction Problems
